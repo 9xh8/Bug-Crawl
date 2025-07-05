@@ -12,7 +12,14 @@ public class GameInput : MonoBehaviour {
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
+    }
+
+    private void OnEnable() {
         playerInputActions.Player.Enable();
+    }
+
+    private void OnDisable() {
+        playerInputActions.Player.Disable();
     }
 
     private void Start() {

@@ -24,22 +24,15 @@ public class PlayerSquish : MonoBehaviour {
 
 
         gameInput.OnPlayerPressJump += GameInput_OnPlayerPressJump;
-        gameInput.OnPlayerPressGlitch += GameInput_OnPlayerPressGlitch;
     }
 
 
     private void GameInput_OnPlayerPressJump(object sender, System.EventArgs e) {
-        if (!playerGlitch.IsGlitched())
-        
-        playerVisual.DOScale(new Vector3(stretchX, stretchY), stretchTime).OnComplete(() => {
-            ResetScale();
-        });
-    }
-
-    private void GameInput_OnPlayerPressGlitch(object sender, System.EventArgs e) {
-        playerVisual.DOScale(new Vector3(stretchX, stretchY), stretchTime).OnComplete(() => {
-            ResetScale();
-        });
+        if (player.IsGrounded()) {
+            playerVisual.DOScale(new Vector3(stretchX, stretchY), stretchTime).OnComplete(() => {
+                ResetScale();
+            });
+        }
     }
 
     private void Update() {

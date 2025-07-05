@@ -28,6 +28,14 @@ public class PlayerGlitch : MonoBehaviour {
         bc = GetComponentInChildren<BoxCollider2D>();
     }
 
+    private void OnEnable() {
+        playerInputActions.Player.Enable();
+    }
+
+    private void OnDisable() {
+        playerInputActions.Player.Disable();
+    }
+
     private void Start() {
         glitchTimer = glitchTimerMax;
 
@@ -61,7 +69,7 @@ public class PlayerGlitch : MonoBehaviour {
     }
 
     private void ActivateGlitch() {
-        if (!isGlitched) {  
+        if (!isGlitched && rb != null) {  
             isGlitched = true;
             canGlitch = false;
 
@@ -74,7 +82,7 @@ public class PlayerGlitch : MonoBehaviour {
     }
 
     private void DeactivateGlitch() {
-        if (isGlitched) {
+        if (isGlitched && rb != null) {
             isGlitched = false;
             canGlitch = true;
 

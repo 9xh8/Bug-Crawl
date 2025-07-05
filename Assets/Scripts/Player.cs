@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
@@ -31,6 +32,14 @@ public class Player : MonoBehaviour {
 
         rb = GetComponent<Rigidbody2D>();
         playerGlitch = GetComponent<PlayerGlitch>();
+    }
+
+    private void OnEnable() {
+        playerInputActions.Player.Enable();
+    }
+
+    private void OnDisable() {
+        playerInputActions.Player.Disable();
     }
 
     private void Update() {
@@ -90,6 +99,10 @@ public class Player : MonoBehaviour {
         Gizmos.color = Color.red;
 
         Gizmos.DrawWireSphere(feetPos.position, checkRadius);
+    }
+
+    public void Die() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public bool IsGrounded() {
