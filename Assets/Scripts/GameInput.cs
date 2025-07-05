@@ -1,0 +1,50 @@
+using System;
+using UnityEngine;
+
+public class GameInput : MonoBehaviour {
+
+    public event EventHandler OnPlayerPressJump;
+    public event EventHandler OnPlayerReleaseJump;
+    public event EventHandler OnPlayerPressGlitch;
+    public event EventHandler OnPlayerReleaseGlitch;
+
+    private PlayerInputActions playerInputActions;
+
+    private void Awake() {
+        playerInputActions = new PlayerInputActions();
+        playerInputActions.Player.Enable();
+    }
+
+    private void Start() {
+        playerInputActions.Player.Jump.performed += Jump_performed;
+        playerInputActions.Player.Jump.canceled += Jump_canceled;
+
+        playerInputActions.Player.Glitch.performed += Glitch_performed;
+        playerInputActions.Player.Glitch.canceled += Glitch_canceled;
+    }
+
+    private void Glitch_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerPressGlitch?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Glitch_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerReleaseGlitch?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerPressJump?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Jump_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerReleaseJump?.Invoke(this, EventArgs.Empty);
+    }
+
+    public Vector2 GetMoveInput() {
+        Vector2 moveInput;
+
+        moveInput = playerInputActions.Player.Movement.ReadValue<Vector2>();
+
+        return moveInput;
+    }
+
+}
