@@ -7,11 +7,13 @@ using UnityEngine;
 public class DialougeCameraManager : MonoBehaviour {
 
 
-    [SerializeField] private CinemachineVirtualCamera mainVirtualCamera;
+    [SerializeField] private CinemachineVirtualCamera dialougeCamera;
 
     [SerializeField] private GameInput gameInput;
 
     [SerializeField] private Player player;
+
+    [SerializeField] private TutorialArea tutorialArea;
 
     [SerializeField] private float zoomDelayTime;
 
@@ -19,19 +21,25 @@ public class DialougeCameraManager : MonoBehaviour {
         player.state = Player.PlayerStates.dialouge;
 
         gameInput.OnPlayerContinue += GameInput_OnPlayerContinue;
+
+        tutorialArea.OnPlayerEnterTutorialArea += TutorialArea_OnPlayerEnterTutorialArea;
+    }
+
+    private void TutorialArea_OnPlayerEnterTutorialArea(object sender, EventArgs e) {
+        dialougeCamera.Priority = 13;
     }
 
     private void Update() {
         zoomDelayTime -= Time.deltaTime;
         if (zoomDelayTime <= 0f && zoomDelayTime >= -1f) {
-            mainVirtualCamera.Priority = 3;
+            dialougeCamera.Priority = 13;
         }
     }
 
     private void GameInput_OnPlayerContinue(object sender, System.EventArgs e) {
         if (zoomDelayTime <= 0) {
             player.state = Player.PlayerStates.gameplay;
-            mainVirtualCamera.Priority = 10;
+            dialougeCamera.Priority = 3;
         }
     }
 }

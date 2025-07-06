@@ -17,6 +17,8 @@ public class MainMenuManager : MonoBehaviour {
         playButton.onClick.AddListener(() => {
             sceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
+
+        playButton.Select();
     }
 
 }

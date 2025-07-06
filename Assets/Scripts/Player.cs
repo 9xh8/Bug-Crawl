@@ -28,6 +28,7 @@ public class Player : MonoBehaviour {
         dialouge,
         gameplay,
         gameover,
+        tutorial,
     }
 
     public PlayerStates state;
@@ -53,9 +54,11 @@ public class Player : MonoBehaviour {
         if (!playerGlitch.IsGlitched() && state == PlayerStates.gameplay)
             HandleJumping();
 
-        if (state != PlayerStates.gameplay)
+        if (state != PlayerStates.gameplay) {
+            rb.velocity = new Vector2(0f, rb.velocity.y * .5f);
             return;
-        
+        }
+
         HandleMovement();
         HandleFlipping();
     }

@@ -13,6 +13,8 @@ public class GameInput : MonoBehaviour {
 
     private PlayerInputActions playerInputActions;
 
+    [SerializeField] private Player player; 
+
     private void Awake() {
         playerInputActions = new PlayerInputActions();
     }
@@ -61,6 +63,21 @@ public class GameInput : MonoBehaviour {
         moveInput = playerInputActions.Player.Movement.ReadValue<Vector2>();
 
         return moveInput;
+    }
+
+    private void Update() {
+        if (player != null) {
+            if (player.state != Player.PlayerStates.gameplay) {
+                playerInputActions.Player.Movement.Disable();
+                playerInputActions.Player.Jump.Disable();
+                playerInputActions.Player.Glitch.Disable();
+            }
+            else {
+                playerInputActions.Player.Movement.Enable();
+                playerInputActions.Player.Jump.Enable();
+                playerInputActions.Player.Glitch.Enable();
+            }
+        }
     }
 
 }
