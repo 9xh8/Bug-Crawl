@@ -5,8 +5,11 @@ public class GameInput : MonoBehaviour {
 
     public event EventHandler OnPlayerPressJump;
     public event EventHandler OnPlayerReleaseJump;
+
     public event EventHandler OnPlayerPressGlitch;
     public event EventHandler OnPlayerReleaseGlitch;
+
+    public event EventHandler OnPlayerContinue;
 
     private PlayerInputActions playerInputActions;
 
@@ -28,6 +31,8 @@ public class GameInput : MonoBehaviour {
 
         playerInputActions.Player.Glitch.performed += Glitch_performed;
         playerInputActions.Player.Glitch.canceled += Glitch_canceled;
+
+        playerInputActions.Player.Continue.performed += Continue_performed;
     }
 
     private void Glitch_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
@@ -44,6 +49,10 @@ public class GameInput : MonoBehaviour {
 
     private void Jump_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
         OnPlayerReleaseJump?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Continue_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerContinue?.Invoke(this, EventArgs.Empty);
     }
 
     public Vector2 GetMoveInput() {

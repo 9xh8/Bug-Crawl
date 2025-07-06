@@ -19,6 +19,7 @@ public class PlayerGlitch : MonoBehaviour {
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private PlayerInputActions playerInputActions;
+    private Player player;
 
     private void Awake() {
         playerInputActions = new PlayerInputActions();
@@ -26,6 +27,7 @@ public class PlayerGlitch : MonoBehaviour {
 
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponentInChildren<BoxCollider2D>();
+        player = GetComponent<Player>();
     }
 
     private void OnEnable() {
@@ -56,7 +58,7 @@ public class PlayerGlitch : MonoBehaviour {
     }
 
     private void GameInput_OnPlayerPressGlitch(object sender, System.EventArgs e) {
-        if (canGlitch && glitchTimer > 0f) {
+        if (canGlitch && glitchTimer > 0f && player.state == Player.PlayerStates.gameplay) {
             ActivateGlitch();
         }
         else {

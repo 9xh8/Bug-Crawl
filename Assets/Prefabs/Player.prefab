@@ -296,6 +296,7 @@ MonoBehaviour:
     m_Bits: 64
   gameInput: {fileID: 0}
   playerVisual: {fileID: 6326490710459967266}
+  state: 0
 --- !u!114 &6326490711195345417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   glitchImage: {fileID: 6326490711363272749}
   originalColor: {r: 0.5019608, g: 0.49803925, b: 0.49803925, a: 1}
-  halfColor: {r: 0.8301887, g: 0.6580339, b: 0, a: 1}
+  halfColor: {r: 0.7075472, g: 0.56069773, b: 0, a: 1}
   quarterColor: {r: 0.5660378, g: 0.15752938, b: 0.15752938, a: 1}
   playerGlitch: {fileID: 6326490711195345422}
 --- !u!1 &6326490711715548200

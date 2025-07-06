@@ -28,7 +28,7 @@ public class PlayerSquish : MonoBehaviour {
 
 
     private void GameInput_OnPlayerPressJump(object sender, System.EventArgs e) {
-        if (player.IsGrounded()) {
+        if (player.IsGrounded() && player.state == Player.PlayerStates.gameplay) {
             playerVisual.DOScale(new Vector3(stretchX, stretchY), stretchTime).OnComplete(() => {
                 ResetScale();
             });

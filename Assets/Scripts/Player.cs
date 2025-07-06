@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
@@ -26,12 +24,21 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameInput gameInput;
     [SerializeField] private Transform playerVisual;
 
+    public enum PlayerStates {
+        dialouge,
+        gameplay,
+        gameover,
+    }
+
+    public PlayerStates state;
+
     private void Awake() {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
 
         rb = GetComponent<Rigidbody2D>();
         playerGlitch = GetComponent<PlayerGlitch>();
+        state = PlayerStates.gameplay;
     }
 
     private void OnEnable() {
@@ -43,8 +50,11 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (!playerGlitch.IsGlitched())
+        if (!playerGlitch.IsGlitched() && state == PlayerStates.gameplay)
             HandleJumping();
+
+        if (state != PlayerStates.gameplay)
+            return;
         
         HandleMovement();
         HandleFlipping();
@@ -108,5 +118,4 @@ public class Player : MonoBehaviour {
     public bool IsGrounded() {
         return isGrounded;
     }
-
 }
