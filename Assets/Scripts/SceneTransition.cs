@@ -25,7 +25,7 @@ public class SceneTransition : MonoBehaviour {
     private IEnumerator ReloadCurrentSceneCoroutine() {
         animator.SetTrigger(START);
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
@@ -33,7 +33,7 @@ public class SceneTransition : MonoBehaviour {
     private IEnumerator LoadSceneCoroutine(int sceneIndex) {
         animator.SetTrigger(START);
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSecondsRealtime(transitionTime);
 
         SceneManager.LoadScene(sceneIndex);
     }

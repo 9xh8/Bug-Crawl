@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +14,10 @@ public class PlayerGlitch : MonoBehaviour {
     [SerializeField] private AnimationCurve curve;
 
     [SerializeField] private GameInput gameInput;
+    [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private float collisionShakeIntensity;
+    [SerializeField] private float collisionShakeTime;
+    
     private bool isGlitched = false;
     private bool canGlitch = true;
 
@@ -90,6 +95,12 @@ public class PlayerGlitch : MonoBehaviour {
 
             rb.gravityScale = 10f;
             bc.isTrigger = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (isGlitched && !other.GetComponent<RoomBasedCamera>()) {
+            cameraShake.Shake(collisionShakeIntensity, collisionShakeTime);
         }
     }
 

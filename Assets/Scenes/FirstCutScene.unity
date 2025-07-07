@@ -184,7 +184,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <wiggle a=0.2><wave a=0.1>Action to skip
+  m_text: <wiggle a=0.2><wave a=0.1>Press Enter to Skip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 59b42fe3e9611bc46895bd9852f5b329, type: 2}
   m_sharedMaterial: {fileID: 238905901154308073, guid: 59b42fe3e9611bc46895bd9852f5b329, type: 2}
@@ -277,7 +277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 50}
+  m_AnchoredPosition: {x: -185.02, y: 50}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &24849352
@@ -1187,6 +1187,74 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 573568038, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 573568038, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 573568038, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 573568038, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -85
+      objectReference: {fileID: 0}
+    - target: {fileID: 648026895, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 648026895, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 648026895, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 648026895, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1273443239, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393511385, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393511385, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393511385, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1393511385, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778002542, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778002542, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778002542, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1778002542, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -155
+      objectReference: {fileID: 0}
     - target: {fileID: 6326490710245485150, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1302,6 +1370,7 @@ PrefabInstance:
     - {fileID: 6326490711195345422, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
     - {fileID: 6326490711195345423, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
     - {fileID: 6326490711195345420, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
+    - {fileID: 326327786, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2c7d3990cd5221a4a8008569bdf6abff, type: 3}
 --- !u!114 &851537712 stripped
 MonoBehaviour:

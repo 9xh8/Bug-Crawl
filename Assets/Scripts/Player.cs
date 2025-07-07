@@ -4,25 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
+    [Header("Movement Settings")]
     [SerializeField] private float moveSpeed;
+    [SerializeField] private Transform playerVisual;
     private Vector2 moveInput;
     private Rigidbody2D rb;
     private PlayerInputActions playerInputActions;
     private PlayerGlitch playerGlitch;
 
+    [Header("Jumping Settings")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float coyoteTime;
     [SerializeField] private float bufferTime;
     [SerializeField] private float checkRadius;
     [SerializeField] private Transform feetPos;
     [SerializeField] private LayerMask groundLayer;
-    
-    private bool isGrounded;
     private float coyoteTimeCounter;
     private float bufferTimeCounter;
-
+    private bool isGrounded;
+    
+    [Header("Input Settings")]
     [SerializeField] private GameInput gameInput;
-    [SerializeField] private Transform playerVisual;
+
+    [Header("GameFeel Settings")]
+    [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private float shakeIntensity;
+    [SerializeField] private float shakeTime;
+    [SerializeField] private GameObject landParticle;
+    private bool doOnLand;
 
     public enum PlayerStates {
         dialouge,
@@ -61,6 +70,7 @@ public class Player : MonoBehaviour {
 
         HandleMovement();
         HandleFlipping();
+        OnLand();
     }
 
     private void FixedUpdate() {
@@ -105,6 +115,19 @@ public class Player : MonoBehaviour {
             playerVisual.eulerAngles = new Vector3(transform.eulerAngles.x, 0f, transform.eulerAngles.z);
         }else if (moveInput.x < 0f) {
             playerVisual.eulerAngles = new Vector3(transform.eulerAngles.x, 180f, transform.eulerAngles.z);
+        }
+    }
+
+    private void OnLand() {
+        if (isGrounded) {
+            if (doOnLand) {
+                cameraShake.Shake(shakeIntensity, shakeTime);
+                Instantiate(landParticle, feetPos.position, Quaternion.identity);
+                doOnLand = false;
+            }
+        }
+        else {
+            doOnLand = true;
         }
     }
 

@@ -11,6 +11,8 @@ public class GameInput : MonoBehaviour {
 
     public event EventHandler OnPlayerContinue;
 
+    public event EventHandler OnPlayerPause;
+
     private PlayerInputActions playerInputActions;
 
     [SerializeField] private Player player; 
@@ -21,10 +23,11 @@ public class GameInput : MonoBehaviour {
 
     private void OnEnable() {
         playerInputActions.Player.Enable();
+        playerInputActions.UI.Enable();
     }
 
     private void OnDisable() {
-        playerInputActions.Player.Disable();
+        playerInputActions.UI.Disable();
     }
 
     private void Start() {
@@ -35,6 +38,17 @@ public class GameInput : MonoBehaviour {
         playerInputActions.Player.Glitch.canceled += Glitch_canceled;
 
         playerInputActions.Player.Continue.performed += Continue_performed;
+
+        playerInputActions.Player.Pause.performed += Pause_performed1;
+        playerInputActions.UI.Pause.performed += Pause_performed;
+    }
+
+    private void Pause_performed1(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerPause?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+        OnPlayerPause?.Invoke(this, EventArgs.Empty);
     }
 
     private void Glitch_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
@@ -78,6 +92,10 @@ public class GameInput : MonoBehaviour {
                 playerInputActions.Player.Glitch.Enable();
             }
         }
+    }
+
+    public PlayerInputActions PlayerInputActions() {
+        return playerInputActions;
     }
 
 }

@@ -19,6 +19,8 @@ public class MainMenuManager : MonoBehaviour {
         });
 
         playButton.Select();
+
+        Time.timeScale = 1f;
     }
 
 }

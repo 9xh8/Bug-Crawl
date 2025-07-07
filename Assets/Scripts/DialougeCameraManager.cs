@@ -8,6 +8,7 @@ public class DialougeCameraManager : MonoBehaviour {
 
 
     [SerializeField] private CinemachineVirtualCamera dialougeCamera;
+    [SerializeField] private CinemachineBrain cameraBrain;
 
     [SerializeField] private GameInput gameInput;
 
@@ -37,7 +38,7 @@ public class DialougeCameraManager : MonoBehaviour {
     }
 
     private void GameInput_OnPlayerContinue(object sender, System.EventArgs e) {
-        if (zoomDelayTime <= 0) {
+        if (zoomDelayTime <= 0 && !cameraBrain.IsBlending) {
             player.state = Player.PlayerStates.gameplay;
             dialougeCamera.Priority = 3;
         }

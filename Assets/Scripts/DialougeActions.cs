@@ -11,9 +11,6 @@ public class DialougeActions : MonoBehaviour {
     [SerializeField] private DialougeCameraManager dialougeCamera;
     [SerializeField] private TutorialArea tutorialArea;
 
-    [SerializeField] private float slowedTimeSpeed;
-    [SerializeField] private float slowedTimeDuration;
-
     private Player player;
 
     private const string APPEAR = "Appear";
@@ -29,7 +26,6 @@ public class DialougeActions : MonoBehaviour {
     private void TutorialArea_OnPlayerEnterTutorialArea(object sender, System.EventArgs e) {
         player.state = Player.PlayerStates.tutorial;
         tutorialArea.gameObject.SetActive(player.state == Player.PlayerStates.tutorial);
-        Time.timeScale = Mathf.Lerp(1f, slowedTimeSpeed, slowedTimeDuration);
     }
 
     private void Update() {

@@ -16,6 +16,8 @@ public class PlayerSquish : MonoBehaviour {
 
     private Player player;
     private PlayerGlitch playerGlitch;
+    private Tween currentTween;
+
     private bool doOnLand;
 
     private void Start() {
@@ -29,6 +31,8 @@ public class PlayerSquish : MonoBehaviour {
 
     private void GameInput_OnPlayerPressJump(object sender, System.EventArgs e) {
         if (player.IsGrounded() && player.state == Player.PlayerStates.gameplay) {
+            KillCurrentTween();
+
             playerVisual.DOScale(new Vector3(stretchX, stretchY), stretchTime).OnComplete(() => {
                 ResetScale();
             });
@@ -36,8 +40,13 @@ public class PlayerSquish : MonoBehaviour {
     }
 
     private void Update() {
+        if (playerVisual == null)
+            return;
+
         if (player.IsGrounded()) {
             if (doOnLand && !playerGlitch.IsGlitched()) {
+                KillCurrentTween();
+
                 playerVisual.DOScale(new Vector3(squishX, squishY), squishTime).OnComplete(() => {
                     ResetScale();
                 });
@@ -50,6 +59,17 @@ public class PlayerSquish : MonoBehaviour {
     }
 
     private void ResetScale() {
+        if (playerVisual == null) return;
+
+        KillCurrentTween();
+
         playerVisual.DOScale(Vector3.one, stretchTime);
+    }
+
+    private void KillCurrentTween() {
+        if (currentTween != null && currentTween.IsActive()) {
+            currentTween.Kill();
+            currentTween = null;
+        }
     }
 }
