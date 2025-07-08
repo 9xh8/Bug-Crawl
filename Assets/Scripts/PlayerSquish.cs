@@ -26,6 +26,8 @@ public class PlayerSquish : MonoBehaviour {
 
 
         gameInput.OnPlayerPressJump += GameInput_OnPlayerPressJump;
+
+        KillCurrentTween();
     }
 
 

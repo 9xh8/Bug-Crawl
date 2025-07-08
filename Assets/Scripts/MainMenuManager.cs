@@ -18,6 +18,18 @@ public class MainMenuManager : MonoBehaviour {
             sceneTransition.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         });
 
+        optionsButton.onClick.AddListener(() => {
+            
+        });
+
+        creditsButton.onClick.AddListener(() => {
+            
+        });
+
+        quitButton.onClick.AddListener(() => {
+            Application.Quit();
+        });
+
         playButton.Select();
 
         Time.timeScale = 1f;
