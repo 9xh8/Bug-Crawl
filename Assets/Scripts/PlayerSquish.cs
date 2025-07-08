@@ -26,8 +26,6 @@ public class PlayerSquish : MonoBehaviour {
 
 
         gameInput.OnPlayerPressJump += GameInput_OnPlayerPressJump;
-
-        KillCurrentTween();
     }
 
 
@@ -65,7 +63,7 @@ public class PlayerSquish : MonoBehaviour {
 
         KillCurrentTween();
 
-        playerVisual.DOScale(Vector3.one, stretchTime);
+        playerVisual.DOScale(Vector3.one, stretchTime).SetAutoKill(true);
     }
 
     private void KillCurrentTween() {
