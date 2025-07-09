@@ -33,6 +33,9 @@ public class Player : MonoBehaviour {
     [SerializeField] private GameObject landParticle;
     private bool doOnLand;
 
+    [Header("Refrences")]
+    [SerializeField] private WinningDoor winningDoor;
+
     public enum PlayerStates {
         dialouge,
         gameplay,
@@ -49,6 +52,14 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         playerGlitch = GetComponent<PlayerGlitch>();
         state = PlayerStates.gameplay;
+    }
+
+    private void Start() {
+        winningDoor.OnPlayerWin += WinningDoor_OnPlayerWin;
+    }
+
+    private void WinningDoor_OnPlayerWin(object sender, System.EventArgs e) {
+        Destroy(gameObject);
     }
 
     private void OnEnable() {
