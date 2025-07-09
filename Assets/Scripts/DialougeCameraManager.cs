@@ -8,6 +8,7 @@ public class DialougeCameraManager : MonoBehaviour {
 
 
     [SerializeField] private CinemachineVirtualCamera dialougeCamera;
+    [SerializeField] private CinemachineVirtualCamera altDialougeCamera;
     [SerializeField] private CinemachineBrain cameraBrain;
 
     [SerializeField] private GameInput gameInput;
@@ -27,7 +28,7 @@ public class DialougeCameraManager : MonoBehaviour {
     }
 
     private void TutorialArea_OnPlayerEnterTutorialArea(object sender, EventArgs e) {
-        dialougeCamera.Priority = 13;
+        altDialougeCamera.Priority = 13;
     }
 
     private void Update() {
@@ -41,6 +42,7 @@ public class DialougeCameraManager : MonoBehaviour {
         if (zoomDelayTime <= 0 && !cameraBrain.IsBlending) {
             player.state = Player.PlayerStates.gameplay;
             dialougeCamera.Priority = 3;
+            altDialougeCamera.Priority = 2;
         }
     }
 }
