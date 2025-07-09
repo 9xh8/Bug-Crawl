@@ -41,6 +41,8 @@ public class GameInput : MonoBehaviour {
 
         playerInputActions.Player.Pause.performed += Pause_performed1;
         playerInputActions.UI.Pause.performed += Pause_performed;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Pause_performed1(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
@@ -97,5 +99,4 @@ public class GameInput : MonoBehaviour {
     public PlayerInputActions PlayerInputActions() {
         return playerInputActions;
     }
-
 }

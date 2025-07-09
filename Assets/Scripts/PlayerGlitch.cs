@@ -19,7 +19,7 @@ public class PlayerGlitch : MonoBehaviour {
     [SerializeField] private float collisionShakeTime;
     
     private bool isGlitched = false;
-    private bool canGlitch = true;
+    [HideInInspector] public bool canGlitch = false;
 
     private Rigidbody2D rb;
     private BoxCollider2D bc;
